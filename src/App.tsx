@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import useFetchImages from './hooks/useFetchImages';
+import React, { useEffect, useRef } from 'react';
+import useFetchImages, { FetchedImageType } from './hooks/useFetchImages';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useSearchQuery from './hooks/useSearchQuery';
@@ -40,6 +40,12 @@ const App = () => {
   console.log('Is Fetching', isFetching);
   console.log('hasNextPage', hasNextPage);
 
+  const savedImages = useRef([] as FetchedImageType[]);
+
+  useEffect(() => {
+    savedImages.current = [];
+  }, [searchQuery]);
+
   if (error) return <h1>Error Fetching the data</h1>;
 
   return (
@@ -76,7 +82,11 @@ const App = () => {
           {data?.pages.map((page, index) => (
             <React.Fragment key={index}>
               {page.results.map((image) => (
-                <ImageCard image={image} />
+                <ImageCard
+                  image={image}
+                  usedSearchQuery={searchQuery}
+                  savedImages={savedImages}
+                />
               ))}
             </React.Fragment>
           ))}
