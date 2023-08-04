@@ -1,41 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import useFetchImages from './hooks/useFetchImages';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState, useRef } from 'react';
-const App = () => {
-  // console.log(import.meta.env.VITE_ACCESS_KEY);
-  // const [searchQuery, setSearchQuery] = useState('');
 
+import useSearchQuery from './hooks/useSearchQuery';
+import { FaSearch } from 'react-icons/fa';
+
+const App = () => {
+  //useRef hook for getting the input text without rerendering the application
   const searchInput = useRef<HTMLInputElement>(null);
   console.log('Current Value', searchInput.current?.value);
-  // const searchQuery = useRef('');
+
+  //setting the state of the search query after pressing the enter key
+  // const [searchQuery, setSearchQuery] = useState('');
 
   // useEffect(() => {
-  //   const currentInputValue = searchInput.current?.value;
-  //   function setSearchQuery(e) {
+  //   function setQuery(e: KeyboardEvent) {
   //     if (e.code.toLowerCase() === 'enter') {
-  //       // searchQuery = searchInput.current?.value || '';
   //       console.log('Enter pressed');
-  //       searchQuery.current = currentInputValue || '';
-  //       console.log('Search Query', searchQuery.current);
+  //       setSearchQuery(searchInput.current?.value || '');
   //     }
   //   }
 
-  //   document.addEventListener('keydown', (e) => setSearchQuery(e));
+  //   document.addEventListener('keydown', (e) => setQuery(e));
   // }, []);
 
-  const [searchQuery, setSearchQuery] = useState('');
-
-  useEffect(() => {
-    function setQuery(e: KeyboardEvent) {
-      if (e.code.toLowerCase() === 'enter') {
-        console.log('Enter pressed');
-        setSearchQuery(searchInput.current?.value || '');
-      }
-    }
-
-    document.addEventListener('keydown', (e) => setQuery(e));
-  }, []);
+  const { searchQuery, setSearchQuery } = useSearchQuery(searchInput);
 
   console.log('Search Query', searchQuery);
 
@@ -48,9 +37,15 @@ const App = () => {
   console.log('DataLength:', dataLength);
   console.log('Is Fetching', isFetching);
   console.log('hasNextPage', hasNextPage);
+
+  if (error) return <h1>Error Fetching the data</h1>;
+
   return (
     <>
       <input type='text' ref={searchInput} />
+      <FaSearch
+        onClick={() => setSearchQuery(searchInput.current?.value || '')}
+      />
       <InfiniteScroll
         dataLength={dataLength}
         next={fetchNextPage}
