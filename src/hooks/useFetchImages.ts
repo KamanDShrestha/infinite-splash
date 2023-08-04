@@ -28,6 +28,7 @@ const useFetchImages = (imageQuery: string) => {
           params: {
             query: imageQuery,
             page: pageParam,
+            orientation: 'landscape',
           },
         })
         .then((response) => response.data),

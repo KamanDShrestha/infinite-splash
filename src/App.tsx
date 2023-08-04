@@ -4,7 +4,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useSearchQuery from './hooks/useSearchQuery';
 import { FaSearch } from 'react-icons/fa';
-
+import logo from './assets/logo.png';
+import ImageCard from './components/ImageCard';
+import ImageGrid from './components/ImageGrid';
 const App = () => {
   //useRef hook for getting the input text without rerendering the application
   const searchInput = useRef<HTMLInputElement>(null);
@@ -42,10 +44,23 @@ const App = () => {
 
   return (
     <>
-      <input type='text' ref={searchInput} />
-      <FaSearch
-        onClick={() => setSearchQuery(searchInput.current?.value || '')}
-      />
+      <div className='flex my-0 px-3 w-[100vw] items-center gap-4 justify-center'>
+        <img src={logo} className='h-20 ' />
+        <div className='flex p-5 w-[100vw] items-center gap-4 justify-center'>
+          <input
+            type='text'
+            ref={searchInput}
+            className='h-12 p-5 border border-stone-800 w-[60%] rounded-2xl'
+          />
+
+          <FaSearch
+            onClick={() => setSearchQuery(searchInput.current?.value || '')}
+            size={30}
+            className='hover:cursor-pointer'
+          />
+        </div>
+      </div>
+
       <InfiniteScroll
         dataLength={dataLength}
         next={fetchNextPage}
@@ -57,13 +72,15 @@ const App = () => {
           </p>
         }
       >
-        {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.results.map((image) => (
-              <img src={image.urls.small} key={image.id} />
-            ))}
-          </React.Fragment>
-        ))}
+        <ImageGrid>
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((image) => (
+                <ImageCard image={image} />
+              ))}
+            </React.Fragment>
+          ))}
+        </ImageGrid>
       </InfiniteScroll>
     </>
   );
