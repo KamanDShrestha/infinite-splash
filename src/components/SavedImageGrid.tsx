@@ -1,4 +1,3 @@
-import React from 'react';
 import { FetchedImageType } from '../hooks/useFetchImages';
 import ImageCard from './ImageCard';
 
