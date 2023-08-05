@@ -11,6 +11,7 @@ export type FetchedImageType = {
     username: string;
     name: string;
   };
+  description: string;
 };
 
 type FetchedDataType = {
