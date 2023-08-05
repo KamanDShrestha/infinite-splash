@@ -23,14 +23,14 @@ const App = () => {
           success: {
             duration: 3000,
             style: {
-              background: '#363636',
+              background: 'white',
               color: 'green',
             },
           },
           error: {
             duration: 4000,
             style: {
-              background: '#363636',
+              background: 'white',
               color: 'red',
             },
           },

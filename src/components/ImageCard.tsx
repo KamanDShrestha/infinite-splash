@@ -16,10 +16,10 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
       console.log(savedImages.current);
 
       if (Object.keys(localStorage).includes(`saved-${usedSearchQuery}`)) {
-        const alreadySavedImages = JSON.parse(
+        savedImages.current = JSON.parse(
           localStorage.getItem(`saved-${usedSearchQuery}`)!
         );
-        const alreadySavedImage = alreadySavedImages.find(
+        const alreadySavedImage = savedImages.current.find(
           (savedImage: FetchedImageType) => savedImage.id === image.id
         );
 

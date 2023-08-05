@@ -5,27 +5,12 @@ import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ImageGrid from '../components/ImageGrid';
 import ImageCard from '../components/ImageCard';
-import logo from '../assets/logo.png';
+import Logo from '../components/Logo';
 import { NavLink } from 'react-router-dom';
+
 const Home = () => {
   //useRef hook for getting the input text without rerendering the application
   const searchInput = useRef<HTMLInputElement>(null);
-  console.log('Current Value', searchInput.current?.value);
-
-  //setting the state of the search query after pressing the enter key
-  // const [searchQuery, setSearchQuery] = useState('');
-
-  // useEffect(() => {
-  //   function setQuery(e: KeyboardEvent) {
-  //     if (e.code.toLowerCase() === 'enter') {
-  //       console.log('Enter pressed');
-  //       setSearchQuery(searchInput.current?.value || '');
-  //     }
-  //   }
-
-  //   document.addEventListener('keydown', (e) => setQuery(e));
-  // }, []);
-
   const { searchQuery, setSearchQuery } = useSearchQuery(searchInput);
 
   console.log('Search Query', searchQuery);
@@ -51,7 +36,7 @@ const Home = () => {
   return (
     <>
       <div className='flex my-0 px-3 w-[100vw] items-center gap-4 justify-center'>
-        <img src={logo} className='h-20 ' />
+        <Logo />
         <div className='flex p-5 w-[100vw] items-center gap-4 justify-center'>
           <input
             type='text'
