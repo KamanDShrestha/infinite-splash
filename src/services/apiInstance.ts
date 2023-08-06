@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FetchedImageType } from '../hooks/useFetchImages';
 
+//providing a type for the data that's been fetched through request
 export type FetchedDataType = {
   total: number;
   total_pages: number;
@@ -9,9 +10,9 @@ export type FetchedDataType = {
 
 //from .env file, access key can be imported using import.meta.env.VITE_ACCESS_KEY
 //for now, implmenting the access key by providing directly within the file
-
 const ACCESS_KEY = 'DIXBzQZ6CNbwVFFaZVQgC-6FxHePOa-BZ8yBJM50g-U';
 
+//making a axios instance for providing a custom configuration to provide request to Unsplash API
 export const axiosInstance = axios.create({
   baseURL: 'https://api.unsplash.com/search/photos',
   headers: {

@@ -1,8 +1,5 @@
-// function useEnterKey(key,){
-
 import { useEffect, useState } from 'react';
 
-// }
 function useSearchQuery(searchInput: React.RefObject<HTMLInputElement>) {
   const [searchQuery, setSearchQuery] = useState('');
 

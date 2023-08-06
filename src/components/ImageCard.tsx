@@ -1,6 +1,7 @@
 import React from 'react';
 import { FetchedImageType } from '../hooks/useFetchImages';
 import { toast } from 'react-hot-toast';
+import saveToLocalStorage from '../helpers/saveToLocalStorage';
 
 type Props = {
   image: FetchedImageType;
@@ -23,20 +24,10 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
           toast.error('The image has already been saved.');
           return;
         } else {
-          savedImages.current = [...savedImages.current, image];
-          localStorage.setItem(
-            `saved-${usedSearchQuery}`,
-            JSON.stringify(savedImages.current)
-          );
-          toast.success('The image has been saved.');
+          saveToLocalStorage(savedImages, image, usedSearchQuery!);
         }
       } else {
-        savedImages.current = [...savedImages.current, image];
-        localStorage.setItem(
-          `saved-${usedSearchQuery}`,
-          JSON.stringify(savedImages.current)
-        );
-        toast.success('The image has been saved.');
+        saveToLocalStorage(savedImages, image, usedSearchQuery!);
       }
     }
   }
