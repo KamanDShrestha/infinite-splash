@@ -9,7 +9,6 @@ type Props = {
 };
 
 const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
-  // const savedImages = useRef({ images: [] } as SavedLocalStorage);
   function saveImage(image: FetchedImageType) {
     if (savedImages) {
       if (Object.keys(localStorage).includes(`saved-${usedSearchQuery}`)) {
@@ -43,7 +42,7 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
   }
 
   return (
-    <div className='relative flex flex-col items-center justify-center overflow-hidden transition-all duration-300 ease-in-out rounded-md hover:scale-105'>
+    <div className='relative flex flex-col items-center justify-center overflow-hidden transition-all duration-300 ease-in-out rounded-md shadow-lg hover:scale-105'>
       <img src={image.urls.small} className='w-[100%] h-[100%] peer' />
       <div className='absolute bottom-0 hidden peer-hover:block w-[100%] text-sm  backdrop-blur-lg bg-white/50  hover:block transition-opacity duration-500 ease-in-out'>
         <div className='flex items-center justify-between px-5 py-1 '>

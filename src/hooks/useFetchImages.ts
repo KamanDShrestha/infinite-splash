@@ -30,6 +30,7 @@ const useFetchImages = (imageQuery: string) => {
             query: imageQuery,
             page: pageParam,
             orientation: 'landscape',
+            per_page: 12,
           },
         })
         .then((response) => response.data),
@@ -44,20 +45,5 @@ const useFetchImages = (imageQuery: string) => {
   });
   return fetchedImages;
 };
-// const useFetchImages = (imageQuery: string) => {
-//   const fetchedImages = useQuery<FetchedDataType>({
-//     queryKey: ['images', imageQuery],
-//     queryFn: () =>
-//       axiosInstance
-//         .get<FetchedDataType>('/', {
-//           params: {
-//             query: imageQuery,
-//             page: 1000,
-//           },
-//         })
-//         .then((response) => response.data),
-//   });
-//   return fetchedImages;
-// };
 
 export default useFetchImages;

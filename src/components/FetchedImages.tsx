@@ -1,14 +1,10 @@
-import InfiniteScroll from 'react-infinite-scroller';
-
+import React, { useEffect, useRef } from 'react';
 import useFetchImages, { FetchedImageType } from '../hooks/useFetchImages';
-
 import Loader from './Loader';
 import Message from './Message';
-
-import React, { useEffect, useRef } from 'react';
 import ImageCard from './ImageCard';
-
 import ImageGrid from './ImageGrid';
+import InfiniteScroll from 'react-infinite-scroller';
 
 type Props = {
   searchInput: React.RefObject<HTMLInputElement>;
@@ -37,7 +33,7 @@ const FetchedImages = ({ searchInput, searchQuery }: Props) => {
         />
       )}
 
-      {isFetching && (
+      {isFetching && searchQuery && (
         <div className='text-center'>
           <Message message='Fetching those images, you have requested' />
           <Loader />

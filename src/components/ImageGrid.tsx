@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-// import { SimpleGrid } from '@chakra-ui/react';
+
 type Props = {
   children: ReactNode;
 };
