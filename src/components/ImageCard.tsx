@@ -43,9 +43,9 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
   }
 
   return (
-    <div className='relative flex flex-col items-center justify-center'>
+    <div className='relative flex flex-col items-center justify-center overflow-hidden rounded-md'>
       <img src={image.urls.small} className='w-[100%] h-[100%] peer' />
-      <div className='absolute bottom-0 hidden peer-hover:block w-[100%] text-sm  backdrop-blur-lg bg-white/30  hover:block transition-opacity duration-500 ease-in-out'>
+      <div className='absolute bottom-0 hidden peer-hover:block w-[100%] text-sm  backdrop-blur-lg bg-white/50  hover:block transition-opacity duration-500 ease-in-out'>
         <div className='flex items-center justify-between px-5 py-1 '>
           <div className=' overflow-hidden whitespace-nowrap mr-[70px]text-left  text-stone-950  text-ellipsis '>
             {image.description ?? 'This photo carries a tale too.'}
