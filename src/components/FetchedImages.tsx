@@ -73,6 +73,7 @@ const FetchedImages = ({ searchInput, searchQuery }: Props) => {
           </ImageGrid>
         </InfiniteScroll>
       )}
+
       {!hasNextPage &&
         !isFetching &&
         !isError &&
