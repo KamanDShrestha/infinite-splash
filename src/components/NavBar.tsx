@@ -16,7 +16,7 @@ const NavBar = ({ searchInput, setSearchQuery }: Props) => {
   }
 
   return (
-    <div className='max-[400px]:grid max-[400px]:grid-rows-2 flex my-0 px-8 w-[100vw] items-center gap-4 justify-center '>
+    <div className=' flex my-0 px-8 w-[100vw] items-center gap-4 justify-center '>
       <Logo />
 
       {/* For providing a search input field as well as search icon */}

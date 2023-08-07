@@ -26,7 +26,9 @@ const SavedImages = () => {
       </span>
 
       {/* For viewing all the saved images from the localStorage */}
-      <h1 className='px-8 mt-4 text-4xl font-bold underline'>Saved Images</h1>
+      <h1 className='px-8 mt-4 text-3xl font-bold underline transition-all sm:text-4xl max-[320px]:text-2xl'>
+        Saved Images
+      </h1>
       {/* Providing a message if there're no saved images */}
       {savedImagesQueries.length === 0 ? (
         <Message message='You have not saved any images. You can search for different images in the home page.' />

@@ -16,13 +16,13 @@ const SavedImageGrid = ({ savedQuery }: Props) => {
   const providedQuery = savedQuery.split('-')[1];
   return (
     // Providing a header to the grid
-    <div className='p-5 my-10 rounded-lg shadow-lg bg-stone-100'>
-      <h1 className='text-xl font-semibold underline'>
+    <div className='p-5 my-10 rounded-lg shadow-lg bg-stone-100 max-[320px]:p-2'>
+      <h1 className='text-xl font-semibold underline max-[320px]:text-sm'>
         Saved images for '{providedQuery}'
       </h1>
 
       {/* For providing all the saved images from localStorage for a particular key */}
-      <div className='grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3'>
+      <div className='grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 max md:grid-cols-3 max-[420px]:p-2'>
         {savedImages?.map((savedImage) => (
           <ImageCard image={savedImage} key={savedImage.id} />
         ))}
