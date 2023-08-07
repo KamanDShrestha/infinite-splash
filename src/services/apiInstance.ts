@@ -1,12 +1,4 @@
 import axios from 'axios';
-import { FetchedImageType } from '../hooks/useFetchImages';
-
-//providing a type for the data that's been fetched through request
-export type FetchedDataType = {
-  total: number;
-  total_pages: number;
-  results: FetchedImageType[];
-};
 
 //from .env file, access key can be imported using import.meta.env.VITE_ACCESS_KEY
 //for now, implmenting the access key by providing directly within the file

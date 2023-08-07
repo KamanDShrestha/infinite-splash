@@ -3,9 +3,11 @@ import AppLayout from './pages/AppLayout';
 import Home from './pages/Home';
 import SavedImages from './pages/SavedImages';
 import { Toaster } from 'react-hot-toast';
+
 const App = () => {
   return (
     <>
+      {/* Implementing routes for a single page application and navigating between UI */}
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
@@ -14,6 +16,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      {/* For providing notifications while saving images */}
       <Toaster
         position='top-center'
         containerStyle={{

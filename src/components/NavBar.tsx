@@ -8,14 +8,18 @@ type Props = {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 };
 
+//This component is used for providing a navigation bar along with search input field
 const NavBar = ({ searchInput, setSearchQuery }: Props) => {
+  // function for handling the click to search icon for setting the search query
   function handleClick() {
     setSearchQuery(searchInput.current?.value || '');
   }
 
   return (
-    <div className='flex my-0 px-8 w-[100vw] items-center gap-4 justify-center'>
+    <div className='max-[400px]:grid max-[400px]:grid-rows-2 flex my-0 px-8 w-[100vw] items-center gap-4 justify-center '>
       <Logo />
+
+      {/* For providing a search input field as well as search icon */}
       <div className='flex p-5 w-[100vw] items-center gap-4 justify-center'>
         <input
           type='text'
@@ -29,11 +33,14 @@ const NavBar = ({ searchInput, setSearchQuery }: Props) => {
           className='hover:cursor-pointer'
         />
       </div>
+
+      {/* For navigating to saved images screen for viewing all the saved images */}
       <NavLink
         to='/savedImages'
         className='flex items-center gap-2 text-lg font-semibold'
       >
-        Saved <FaSave />
+        <span className='hidden sm:block'>Saved</span>
+        <FaSave />
       </NavLink>
     </div>
   );

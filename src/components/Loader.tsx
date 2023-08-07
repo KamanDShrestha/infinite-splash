@@ -1,3 +1,4 @@
+// This component is used for providing a loading indicator while fetching the images
 const Loader = () => {
   return (
     <div
