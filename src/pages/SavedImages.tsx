@@ -33,7 +33,7 @@ const SavedImages = () => {
       {savedImagesQueries.length === 0 ? (
         <Message message='You have not saved any images. You can search for different images in the home page.' />
       ) : (
-        <div className='px-2 sm:px-10'>
+        <div className='px-2 sm:px-8'>
           {savedImagesQueries.map((query: string) => (
             <SavedImageGrid savedQuery={query} key={query} />
           ))}
