@@ -45,8 +45,6 @@ const useFetchImages = (imageQuery: string) => {
 
     // for checking whether there's a next page to fetch or not
     getNextPageParam: (lastPage, allPages) => {
-      console.log(lastPage.total_pages, allPages.length);
-      console.log(lastPage.total_pages > allPages.length);
       return lastPage.total_pages > allPages.length
         ? allPages.length + 1
         : undefined;
