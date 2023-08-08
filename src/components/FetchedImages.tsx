@@ -33,6 +33,15 @@ const FetchedImages = ({ searchInput, searchQuery }: Props) => {
   }, [searchQuery]);
 
   //providing a error message if there's a error
+
+  if (isError && error.message.includes('403')) {
+    return (
+      <Message
+        message={`The images cannot be fetched at the moment. Please try again later.  ❌ `}
+      />
+    );
+  }
+
   if (isError) {
     return (
       <Message
