@@ -16,7 +16,7 @@ const SavedImageGrid = ({ savedQuery }: Props) => {
   const providedQuery = savedQuery.split('-')[1];
   return (
     // Providing a header to the grid
-    <div className='p-5 my-10 rounded-lg shadow-lg bg-stone-100 max-[320px]:p-2 transition-all'>
+    <div className='p-3 my-10 rounded-lg shadow-lg bg-stone-100 max-[320px]:p-2 transition-all'>
       <h1 className='text-xl font-semibold underline max-[320px]:text-sm transition-all'>
         Saved images for '{providedQuery}'
       </h1>
