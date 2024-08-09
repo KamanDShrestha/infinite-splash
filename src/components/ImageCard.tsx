@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FetchedImageType } from '../hooks/useFetchImages';
 import { toast } from 'react-hot-toast';
 import saveToLocalStorage from '../helpers/saveToLocalStorage';
+import LoadingSpinner from './LoadingSpinner';
 
 type Props = {
   image: FetchedImageType;
@@ -12,6 +13,8 @@ type Props = {
 // This component is used for providing a container to the fetched and saved images
 // if savedImages and used
 const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
   // This function is used for saving the images to localStorage
   function saveImage(image: FetchedImageType) {
     if (savedImages) {
@@ -35,6 +38,27 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
     }
   }
 
+  function downloadImage() {
+    setIsDownloading(() => true);
+    // using fetch API to get the response as blob and then using download attribute of anchor tag to download the image after it's been appended to the body, clicked and then removed accordingly
+    fetch(image.urls.raw)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = image.description ?? 'Image 101';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setIsDownloading(() => false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsDownloading(false);
+      });
+  }
+
   return (
     // container for the images
     <div className='relative flex flex-col items-center justify-center overflow-hidden transition-all duration-300 ease-in-out rounded-md shadow-lg hover:scale-105'>
@@ -54,6 +78,12 @@ const ImageCard = ({ image, usedSearchQuery, savedImages }: Props) => {
               Save
             </button>
           )}
+          <button
+            className='px-3 py-1 bg-stone-950 rounded-xl hover:cursor-pointer text-stone-100 '
+            onClick={() => downloadImage()}
+          >
+            {isDownloading ? <LoadingSpinner /> : 'Download'}
+          </button>
         </div>
       </div>
     </div>
