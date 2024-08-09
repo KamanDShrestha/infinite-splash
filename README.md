@@ -1,6 +1,6 @@
 # Infinite Splash
 
-Through this application, user can search for images using Unsplash API which would then be displayed to the user in grid layout.
+Through this application, user can search for images using Unsplash API which would then be displayed to the user in grid layout. For searching the images, users can press the 'Enter' key as well as click on the search icon. 
 Along with this, user can also save the images in localStorage of their browser and view them in a saved images screen.
 Saved images are categorized according to the search query provided to fetch the images.
 
