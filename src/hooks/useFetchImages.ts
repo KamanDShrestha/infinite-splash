@@ -42,6 +42,10 @@ const useFetchImages = (imageQuery: string) => {
         })
         .then((response) => response.data),
     staleTime: 24 * 60 * 60 * 1000, //fresh for 24 hr
+    enabled:
+      imageQuery.trim() !== '' &&
+      imageQuery !== undefined &&
+      imageQuery !== null,
 
     // for checking whether there's a next page to fetch or not
     getNextPageParam: (lastPage, allPages) => {
